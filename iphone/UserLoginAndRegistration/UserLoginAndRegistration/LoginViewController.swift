@@ -27,8 +27,48 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func LoginButtonTapped(sender: UIButton) {
-        let userEmail = userEmailTextField.text;
-        let userPassword = userPasswordTextField.text;
+        let userEmail = userEmailTextField.text!;
+        let userPassword = userPasswordTextField.text!;
+        
+        if(userPassword.isEmpty || userPassword.isEmpty) { return; }
+        
+        // Send user data to server side
+        let myUrl = NSURL(string: "http://www.jogchat.com/user-register/userLogin.php");
+        let request = NSMutableURLRequest(URL:myUrl!);
+        request.HTTPMethod = "Post";
+        let postString = "email=\(userEmail)&password=\(userPassword)";
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)\n")
+                return
+            }
+            
+            
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
+                
+                if let parseJSON = json {
+                    let resultValue = parseJSON["status"] as? String
+                    print("result:\(resultValue)")
+                    
+                    if(resultValue == "Success") {
+                        // Login is successful
+                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedIn");
+                        NSUserDefaults.standardUserDefaults().synchronize();
+                        self.dismissViewControllerAnimated(true, completion: nil);
+                    }
+                }
+                
+            } catch{print(error)}
+            
+        }
+        task.resume();
+        
+        /*
         let userEmailStored = NSUserDefaults.standardUserDefaults().stringForKey("userEmail");
         let userPasswordStored = NSUserDefaults.standardUserDefaults().stringForKey("userPassword");
         if (userEmailStored == userEmail) {
@@ -39,7 +79,8 @@ class LoginViewController: UIViewController {
                 self.dismissViewControllerAnimated(true, completion: nil);
                 
             }
-        }
+        }*/
+        
     }
 
     /*
