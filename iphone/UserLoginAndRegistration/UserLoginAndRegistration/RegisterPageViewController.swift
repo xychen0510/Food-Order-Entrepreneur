@@ -64,7 +64,7 @@ class RegisterPageViewController: UIViewController {
                 
             }
         
-        let myUrl = NSURL(string: "http://www.jogchat.com/user-register/userRegister.php");
+        let myUrl = NSURL(string: "http://www.jogchat.com/Food-Order-Entrepreneur-PHP/user-register/userRegister.php");
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
         
