@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         if(userPassword.isEmpty || userPassword.isEmpty) { return; }
         
         // Send user data to server side
-        let myUrl = NSURL(string: "http://www.jogchat.com/user-register/userLogin.php");
+        let myUrl = NSURL(string: "http://www.jogchat.com/Food-Order-Entrepreneur-PHP/user-register/userLogin.php");
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "Post";
         let postString = "email=\(userEmail)&password=\(userPassword)";
