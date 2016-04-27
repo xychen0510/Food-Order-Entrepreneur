@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AC060DCD1CCFF5FE0080985D /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC060DCC1CCFF5FE0080985D /* MealTableViewCell.swift */; };
-		AC060DCF1CD00C710080985D /* images in Resources */ = {isa = PBXBuildFile; fileRef = AC060DCE1CD00C710080985D /* images */; };
 		AC060DFC1CD05FB90080985D /* airport-express.tif in Resources */ = {isa = PBXBuildFile; fileRef = AC060DD71CD05FB90080985D /* airport-express.tif */; };
 		AC060DFD1CD05FB90080985D /* airport-extreme.tif in Resources */ = {isa = PBXBuildFile; fileRef = AC060DD81CD05FB90080985D /* airport-extreme.tif */; };
 		AC060DFE1CD05FB90080985D /* airport-time-capsule.tif in Resources */ = {isa = PBXBuildFile; fileRef = AC060DD91CD05FB90080985D /* airport-time-capsule.tif */; };
@@ -60,7 +59,6 @@
 
 /* Begin PBXFileReference section */
 		AC060DCC1CCFF5FE0080985D /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
-		AC060DCE1CD00C710080985D /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		AC060DD71CD05FB90080985D /* airport-express.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "airport-express.tif"; sourceTree = "<group>"; };
 		AC060DD81CD05FB90080985D /* airport-extreme.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "airport-extreme.tif"; sourceTree = "<group>"; };
 		AC060DD91CD05FB90080985D /* airport-time-capsule.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "airport-time-capsule.tif"; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				AC060DCC1CCFF5FE0080985D /* MealTableViewCell.swift */,
 				AC060E211CD05FB90080985D /* Model */,
 				AC060DD61CD05FB90080985D /* DemoAssets */,
-				AC060DCE1CD00C710080985D /* images */,
 				B725F8EF1CC9CA650024ED7E /* Assets.xcassets */,
 				B725F8F11CC9CA650024ED7E /* LaunchScreen.storyboard */,
 				B725F8F41CC9CA650024ED7E /* Info.plist */,
@@ -289,7 +286,6 @@
 				AC060E161CD05FB90080985D /* mac-mini.tif in Resources */,
 				AC060DFD1CD05FB90080985D /* airport-extreme.tif in Resources */,
 				AC060E151CD05FB90080985D /* logic-pro-x.tif in Resources */,
-				AC060DCF1CD00C710080985D /* images in Resources */,
 				B725F8F31CC9CA650024ED7E /* LaunchScreen.storyboard in Resources */,
 				AC060E191CD05FB90080985D /* macbook-pro-13.tif in Resources */,
 				AC060E0C1CD05FB90080985D /* imac-5k.tif in Resources */,
