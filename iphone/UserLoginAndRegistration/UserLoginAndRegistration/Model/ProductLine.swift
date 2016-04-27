@@ -40,10 +40,14 @@ class ProductLine
         //  (1) iDevices: Apple Watch, iPad, iPhone, iOS
         var products = [Product]()
         
-        products.append(Product(titled: "Apple Watch", description: "Featuring revolutionary new technologies and a pioneering user interface with a beautiful design that honors the rich tradition of precision watchmaking.", imageName: "apple-watch.tif"))
-        products.append(Product(titled: "iPad", description: "iPad Air 2 is the thinnest and most powerful iPad ever.", imageName: "ipad-air2.tif"))
-        products.append(Product(titled: "iPhone", description: "The biggest advancements in iPhone history, featuring two models with stunning 4.7-inch and 5.5-inch Retina HD displays.", imageName: "iphone6.tif"))
-        products.append(Product(titled: "iOS", description: "iOS is the world’s most advanced operating system. Its easy-to-use interface, amazing features, and rock-solid stability are built into every iPhone, iPad, and iPod touch.", imageName: "iOS8.tif"))
+        products.append(Product(titled: "苦瓜牛肉", description: "$9.9", imageName: "Image"))
+        products.append(Product(titled: "凉拌三丝", description: "$9.9", imageName: "Image-2"))
+        products.append(Product(titled: "四川凉面", description: "$9.9", imageName: "Image-1"))
+        products.append(Product(titled: "手工大包子", description: "$9.9", imageName: "Image-3"))
+        products.append(Product(titled: "炸酱面", description: "$9.9", imageName: "Image-4"))
+        products.append(Product(titled: "羊肉烩面", description: "$9.9", imageName: "Image-5"))
+        products.append(Product(titled: "羊肉泡馍", description: "$9.9", imageName: "Image-6"))
+        products.append(Product(titled: "盐水鸭", description: "$9.9", imageName: "Image-7"))
         
         return ProductLine(named: "iDevices", includeProducts: products)
     }
