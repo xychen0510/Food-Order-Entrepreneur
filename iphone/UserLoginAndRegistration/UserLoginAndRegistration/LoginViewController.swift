@@ -5,7 +5,6 @@
 //  Created by Chaoran Wang on 4/24/16.
 //  Copyright © 2016 food. All rights reserved.
 //
-
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -52,6 +51,17 @@ class LoginViewController: UIViewController {
                 if let parseJSON = json {
                     let resultValue = parseJSON["status"] as? String
                     print("result:\(resultValue)")
+                    
+                    
+                    let messageToDisplay:String = parseJSON["message"] as! String!;
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        // Display alert message with confirmation.
+                        if(resultValue=="Error") {
+                            Utils.displayMyAlertMessage(messageToDisplay, controller: self);
+                        }
+
+                    });
                     
                     if(resultValue == "Success") {
                         // Login is successful
