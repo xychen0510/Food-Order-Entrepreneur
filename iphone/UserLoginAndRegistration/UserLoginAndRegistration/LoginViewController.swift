@@ -58,7 +58,9 @@ class LoginViewController: UIViewController {
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         // Display alert message with confirmation.
-                        self.displayMyAlertMessage(messageToDisplay);
+                        if(resultValue=="Error") {
+                            self.displayMyAlertMessage(messageToDisplay);
+                        }
 
                     });
                     
