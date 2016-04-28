@@ -208,6 +208,13 @@
                                     <action selector="confirmResetButtonTapped:" destination="PkR-gt-9SX" eventType="touchUpInside" id="Vgf-8e-coa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5b-Lp-3vz">
+                                <rect key="frame" x="20" y="259" width="280" height="30"/>
+                                <state key="normal" title="Return to Login Page"/>
+                                <connections>
+                                    <action selector="returnToLoginPageButtonTapped:" destination="PkR-gt-9SX" eventType="touchUpInside" id="S4r-ZK-iM3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
