@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         let userEmail = userEmailTextField.text!;
         let userPassword = userPasswordTextField.text!;
         
-        if(userPassword.isEmpty || userPassword.isEmpty) { return; }
+        if(userEmail.isEmpty || userPassword.isEmpty) { return; }
         
         // Send user data to server side
         let myUrl = NSURL(string: "http://www.jogchat.com/Food-Order-Entrepreneur-PHP/user-register/userLogin.php");
@@ -46,8 +46,6 @@ class LoginViewController: UIViewController {
                 print("error=\(error)\n")
                 return
             }
-            
-            
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
                 
@@ -64,7 +62,6 @@ class LoginViewController: UIViewController {
                 }
                 
             } catch{print(error)}
-            
         }
         task.resume();
         
