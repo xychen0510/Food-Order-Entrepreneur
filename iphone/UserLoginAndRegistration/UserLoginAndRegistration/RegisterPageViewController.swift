@@ -113,6 +113,9 @@ class RegisterPageViewController: UIViewController {
     }
     
 
+    @IBAction func iHaveAnAccountButtonTapped(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
     /*
     // MARK: - Navigation
 
