@@ -5,7 +5,6 @@
 //  Created by Chaoran Wang on 4/24/16.
 //  Copyright © 2016 food. All rights reserved.
 //
-
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -59,7 +58,7 @@ class LoginViewController: UIViewController {
                     dispatch_async(dispatch_get_main_queue(), {
                         // Display alert message with confirmation.
                         if(resultValue=="Error") {
-                            self.displayMyAlertMessage(messageToDisplay);
+                            Utils.displayMyAlertMessage(messageToDisplay, controller: self);
                         }
 
                     });
@@ -89,13 +88,6 @@ class LoginViewController: UIViewController {
             }
         }*/
         
-    }
-    
-    func displayMyAlertMessage(userMessage:String) {
-        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert);
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
-        myAlert.addAction(okAction);
-        self.presentViewController(myAlert, animated: true, completion: nil);
     }
 
     /*

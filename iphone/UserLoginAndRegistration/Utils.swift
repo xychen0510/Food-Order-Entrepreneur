@@ -5,7 +5,8 @@
 //  Created by Chaoran Wang on 4/27/16.
 //  Copyright © 2016 food. All rights reserved.
 //
-import Foundation
+
+import UIKit
 
 class Utils {
 
@@ -22,6 +23,14 @@ class Utils {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         let result = emailTest.evaluateWithObject(testStr)
         return result
+    }
+    
+    static func displayMyAlertMessage(userMessage:String, controller: UIViewController) {
+        
+        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert);
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
+        myAlert.addAction(okAction);
+        controller.presentViewController(myAlert, animated: true, completion: nil);
     }
 
 }

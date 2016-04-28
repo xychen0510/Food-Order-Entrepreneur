@@ -28,7 +28,7 @@ class ResetPasswordViewController: UIViewController {
         if(userEmail.isEmpty) { return; }
         
         if (!Utils.isValidEmail(userEmail)){
-            displayMyAlertMessage("Please enter a valid email!");
+            Utils.displayMyAlertMessage("Please enter a valid email!", controller:self);
             return;
         }
         
@@ -53,23 +53,23 @@ class ResetPasswordViewController: UIViewController {
                 if let parseJSON = json {
                     let resultValue = parseJSON["status"] as? String
                     print("result:\(resultValue)")
-                    
-                    var isResetEmailSent:Bool = false;
-                    if(resultValue == "Success") { isResetEmailSent = true; }
-                    var messageToDisplay:String = parseJSON["message"] as! String!;
-                    
-                    if (!isResetEmailSent) {
-                        messageToDisplay = parseJSON["message"] as! String!;
-                    }
+                
+                    let messageToDisplay:String = parseJSON["message"] as! String!;
                     
                     dispatch_async(dispatch_get_main_queue(), {
+                        
+                        if(resultValue == "Error"){
                         // Display alert message with confirmation.
-                        let myAlert = UIAlertController(title:"Alert", message: messageToDisplay, preferredStyle: UIAlertControllerStyle.Alert);
-                        let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default){ action in
-                            self.dismissViewControllerAnimated(true, completion: nil);
+                        Utils.displayMyAlertMessage(messageToDisplay, controller: self);
+                        } else if( resultValue == "Success"){
+                            // Display alert message with confirmation.
+                            let myAlert = UIAlertController(title:"Alert", message: messageToDisplay, preferredStyle: UIAlertControllerStyle.Alert);
+                            let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.Default){ action in
+                                self.dismissViewControllerAnimated(true, completion: nil);
+                            }
+                            myAlert.addAction(okAction);
+                            self.presentViewController(myAlert, animated: true, completion: nil);
                         }
-                        myAlert.addAction(okAction);
-                        self.presentViewController(myAlert, animated: true, completion: nil);
                     });
                 }
             } catch{print(error)}
@@ -80,13 +80,6 @@ class ResetPasswordViewController: UIViewController {
     
     @IBAction func returnToLoginPageButtonTapped(sender: UIButton) {
             self.dismissViewControllerAnimated(true, completion: nil);
-    }
-    
-    func displayMyAlertMessage(userMessage:String) {
-        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert);
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
-        myAlert.addAction(okAction);
-        self.presentViewController(myAlert, animated: true, completion: nil);
     }
     
 

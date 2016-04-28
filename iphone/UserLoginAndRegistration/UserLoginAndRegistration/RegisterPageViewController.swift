@@ -5,7 +5,6 @@
 //  Created by Chaoran Wang on 4/23/16.
 //  Copyright © 2016 food. All rights reserved.
 //
-import Foundation
 import UIKit
 
 class RegisterPageViewController: UIViewController {
@@ -35,19 +34,19 @@ class RegisterPageViewController: UIViewController {
         if (userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty) {
                 
             //Display alert message
-            displayMyAlertMessage("All fields are required");
+            Utils.displayMyAlertMessage("All fields are required", controller: self);
                 return;
         }
         
         // Check if password match
         if (userPassword != userRepeatPassword) {
             //Display an alert message
-            displayMyAlertMessage("Passwords do not match");
+            Utils.displayMyAlertMessage("Passwords do not match", controller: self);
             return;
         }
         
         if (!Utils.isValidEmail(userEmail)){
-            displayMyAlertMessage("Please enter a valid email!");
+            Utils.displayMyAlertMessage("Please enter a valid email!", controller: self);
             return;
         }
         
@@ -100,12 +99,7 @@ class RegisterPageViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     
-    func displayMyAlertMessage(userMessage:String) {
-        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert);
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
-        myAlert.addAction(okAction);
-        self.presentViewController(myAlert, animated: true, completion: nil);
-    }
+
     
     /*
     // MARK: - Navigation
