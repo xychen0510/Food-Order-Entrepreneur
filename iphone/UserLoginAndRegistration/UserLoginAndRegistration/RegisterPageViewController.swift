@@ -5,7 +5,7 @@
 //  Created by Chaoran Wang on 4/23/16.
 //  Copyright © 2016 food. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 class RegisterPageViewController: UIViewController {
@@ -27,43 +27,31 @@ class RegisterPageViewController: UIViewController {
     
     @IBAction func registerButtonTapped(sender: UIButton) {
     
-            let userEmail = userEmailTextField.text!;
+        let userEmail = userEmailTextField.text!;
+        let userPassword = userPasswordTextField.text!;
+        let userRepeatPassword = repeatPasswordTextField.text!;
             
-            let userPassword = userPasswordTextField.text!;
-            
-            let userRepeatPassword = repeatPasswordTextField.text!;
-            
-            
-            
-            // Check for empty fields
-            
-            if (userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty) {
+        // Check for empty fields
+        if (userEmail.isEmpty || userPassword.isEmpty || userRepeatPassword.isEmpty) {
                 
-                
-                
-                //Display alert message
-                
-                displayMyAlertMessage("All fields are required");
-                
+            //Display alert message
+            displayMyAlertMessage("All fields are required");
                 return;
-                
-                
-                
-            }
+        }
         
-            
-            // Check if password match
-            
-            if (userPassword != userRepeatPassword) {
-                
-                //Display an alert message
-                
-                displayMyAlertMessage("Passwords do not match");
-                
-                return;
-                
-            }
+        // Check if password match
+        if (userPassword != userRepeatPassword) {
+            //Display an alert message
+            displayMyAlertMessage("Passwords do not match");
+            return;
+        }
         
+        if (!Utils.isValidEmail(userEmail)){
+            displayMyAlertMessage("Please enter a valid email!");
+            return;
+        }
+        
+        /* Begin contacting server end*/
         let myUrl = NSURL(string: "http://www.jogchat.com/Food-Order-Entrepreneur-PHP/user-register/userRegister.php");
         let request = NSMutableURLRequest(URL:myUrl!);
         request.HTTPMethod = "POST";
@@ -78,11 +66,9 @@ class RegisterPageViewController: UIViewController {
                 print("error=\(error)\n")
                 return
             }
-                
-                
+            
                 do {
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
-                
                 if let parseJSON = json {
                     let resultValue = parseJSON["status"] as? String
                         print("result:\(resultValue)")
@@ -104,25 +90,23 @@ class RegisterPageViewController: UIViewController {
                         myAlert.addAction(okAction);
                         self.presentViewController(myAlert, animated: true, completion: nil);
                     });
-                    
                 }
-                    
                 } catch{print(error)}
-                
             }
         task.resume();
-    
     }
 
+    @IBAction func iHaveAnAccountButtonTapped(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
     
     func displayMyAlertMessage(userMessage:String) {
-        
         let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert);
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
         myAlert.addAction(okAction);
         self.presentViewController(myAlert, animated: true, completion: nil);
     }
-
+    
     /*
     // MARK: - Navigation
 
