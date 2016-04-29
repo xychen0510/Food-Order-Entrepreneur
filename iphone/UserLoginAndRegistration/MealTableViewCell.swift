@@ -40,7 +40,7 @@ class MealTableViewCell: UITableViewCell {
     @IBAction func minusButtonTapped(sender: UIButton) {
         
         var num = Int(number.text!)!
-        if(num == 0) {return}
+        if(num == 0) { removeKeyValuePair(); return }
         num = num - 1
         number.text = String(Int(num))
         persistNum(num)
@@ -53,6 +53,18 @@ class MealTableViewCell: UITableViewCell {
         var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         
         cart[id] = num
+        
+        let storeData = NSKeyedArchiver.archivedDataWithRootObject(cart)
+        NSUserDefaults.standardUserDefaults().setObject(storeData, forKey:"myShoppingCart")
+        NSUserDefaults().synchronize()
+    }
+    
+    func removeKeyValuePair(){
+        
+        let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
+        var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
+        
+        cart.removeValueForKey(id)
         
         let storeData = NSKeyedArchiver.archivedDataWithRootObject(cart)
         NSUserDefaults.standardUserDefaults().setObject(storeData, forKey:"myShoppingCart")

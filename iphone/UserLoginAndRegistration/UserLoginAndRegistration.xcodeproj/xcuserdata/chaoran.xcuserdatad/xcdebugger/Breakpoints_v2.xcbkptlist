@@ -42,28 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UserLoginAndRegistration/MealTableViewController.swift"
-            timestampString = "483659011.120921"
+            timestampString = "483666479.394919"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "numberOfSectionsInTableView(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UserLoginAndRegistration/MealTableViewController.swift"
-            timestampString = "483658644.289636"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "initializeShoppingCart()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

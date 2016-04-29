@@ -19,7 +19,7 @@ class MealTableViewController: UITableViewController {
         
         // Load the sample data.
         loadSampleMeals()
-    //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
+        //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
         let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
 
         
@@ -38,10 +38,9 @@ class MealTableViewController: UITableViewController {
     
     func initializeShoppingCart() {
         //using swift dictionary, hash table for shopping cart [id:num]
-        for meal in meals {
-            cart[meal.id] = 0
-        }
-        
+//        for meal in meals {
+//            cart[meal.id] = 0
+//        }
         let data = NSKeyedArchiver.archivedDataWithRootObject(cart)
         NSUserDefaults.standardUserDefaults().setObject(data, forKey:"myShoppingCart")
         NSUserDefaults().synchronize()
@@ -89,7 +88,11 @@ class MealTableViewController: UITableViewController {
         cell.name?.text = meal.name
         cell.photo.image = meal.photo
         cell.price?.text = meal.price
-        cell.number?.text = String(Int(cart[meal.id]!))
+        if(cart[meal.id] == nil) {
+            cell.number?.text = String(0)
+        } else {
+            cell.number?.text = String(Int(cart[meal.id]!))
+        }
         return cell
     }
     
