@@ -8,14 +8,9 @@
 
 import UIKit
 
-class AppleProductsTableViewController: UITableViewController {
+class MealTableViewController: UITableViewController {
     
-    
-    
-    var products: [Product] {
-        var productLines = ProductLine.productLines()
-        return productLines[0].products
-    }
+    var meals = [Meal]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +20,21 @@ class AppleProductsTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Load the sample data.
+        loadSampleMeals()
+    }
+    
+    func loadSampleMeals() {
+        meals = [Meal]()
+        
+        meals.append(Meal(titled: "苦瓜牛肉", description: "$9.9", imageName: "Image"))
+        meals.append(Meal(titled: "凉拌三丝", description: "$9.9", imageName: "Image-2"))
+        meals.append(Meal(titled: "四川凉面", description: "$9.9", imageName: "Image-1"))
+        meals.append(Meal(titled: "手工大包子", description: "$9.9", imageName: "Image-3"))
+        meals.append(Meal(titled: "炸酱面", description: "$9.9", imageName: "Image-4"))
+        meals.append(Meal(titled: "羊肉烩面", description: "$9.9", imageName: "Image-5"))
+        meals.append(Meal(titled: "羊肉泡馍", description: "$9.9", imageName: "Image-6"))
+        meals.append(Meal(titled: "盐水鸭", description: "$9.9", imageName: "Image-7"))
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,18 +53,18 @@ class AppleProductsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return products.count
+        return meals.count
     }
     
     // indexPath: which section and which row
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Product Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MealTableViewCell", forIndexPath: indexPath) as! MealTableViewCell
         
-        let product = products[indexPath.row]
-        cell.textLabel?.text = product.title
-        cell.detailTextLabel?.text = product.description
-        cell.imageView?.image = product.image
-        
+        let meal = meals[indexPath.row]
+        cell.name?.text = meal.name
+        cell.photo.image = meal.photo
+        cell.price?.text = meal.price
+
         return cell
     }
     

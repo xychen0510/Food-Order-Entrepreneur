@@ -1,5 +1,5 @@
 //
-//  Product.swift
+//  Meal.swift
 //  
 //
 //  Created by Duc Tran on 3/22/15.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public enum ProductRating
+public enum MealRating
 {
     case Unrated
     case Average
@@ -20,21 +20,21 @@ public enum ProductRating
 
 // Represents a generic product. Need an image named "default"
 
-class Product
+class Meal
 {
-    var title: String
-    var description: String
-    var image: UIImage
-    var rating: ProductRating
+    var name: String
+    var price: String
+    var photo: UIImage
+    var rating: MealRating
     
     init(titled: String, description: String, imageName: String)
     {
-        self.title = titled
-        self.description = description
+        self.name = titled
+        self.price = description
         if let img = UIImage(named: imageName) {
-            image = img
+            photo = img
         } else {
-            image = UIImage(named: "default")!
+            photo = UIImage(named: "default")!
         }
         rating = .Unrated
     }
