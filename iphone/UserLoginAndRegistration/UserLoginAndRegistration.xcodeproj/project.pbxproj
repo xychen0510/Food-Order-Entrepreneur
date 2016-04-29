@@ -70,6 +70,13 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		B709D7891CD3812B007BF6A0 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cart;
+			sourceTree = "<group>";
+		};
 		B725F8DC1CC9CA640024ED7E = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +101,7 @@
 				B79963D01CD1BFD5001144A3 /* Utils.swift */,
 				B709D7841CD37AA5007BF6A0 /* Menu */,
 				B709D7831CD37A5F007BF6A0 /* Account */,
+				B709D7891CD3812B007BF6A0 /* Cart */,
 				B725F8EF1CC9CA650024ED7E /* Assets.xcassets */,
 				B725F8F11CC9CA650024ED7E /* LaunchScreen.storyboard */,
 				B725F8F41CC9CA650024ED7E /* Info.plist */,

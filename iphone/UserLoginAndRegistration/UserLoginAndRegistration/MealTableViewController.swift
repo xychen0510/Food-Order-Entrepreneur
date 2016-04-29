@@ -69,7 +69,12 @@ class MealTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.tableView.contentInset = UIEdgeInsetsMake(30, 0, 0, 0)
+        
+        /* Only need this if no navigation bar*/
+        /*
+        self.tableView.contentInset = UIEdgeInsetsMake(30, 0, 0, 0)*/
+        
+        
         // login protected
         
         /*let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
