@@ -12,29 +12,52 @@ class MealTableViewController: UITableViewController {
     
     var meals = [Meal]()
     
+    var cart : [Int:Int] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load the sample data.
+        loadSampleMeals()
+    //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
+        let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
+
+        
+        if(data == nil) {
+            initializeShoppingCart()
+        } else {
+            cart = (NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [Int:Int])!
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        // Load the sample data.
-        loadSampleMeals()
+    }
+    
+    func initializeShoppingCart() {
+        //using swift dictionary, hash table for shopping cart [id:num]
+        for meal in meals {
+            cart[meal.id] = 0
+        }
+        
+        let data = NSKeyedArchiver.archivedDataWithRootObject(cart)
+        NSUserDefaults.standardUserDefaults().setObject(data, forKey:"myShoppingCart")
+        NSUserDefaults().synchronize()
     }
     
     func loadSampleMeals() {
         meals = [Meal]()
         
-        meals.append(Meal(name: "苦瓜牛肉", price: "$9.9", photo: "Image"))
-        meals.append(Meal(name: "凉拌三丝", price: "$9.9", photo: "Image-2"))
-        meals.append(Meal(name: "四川凉面", price: "$9.9", photo: "Image-1"))
-        meals.append(Meal(name: "手工大包子", price: "$9.9", photo: "Image-3"))
-        meals.append(Meal(name: "炸酱面", price: "$9.9", photo: "Image-4"))
-        meals.append(Meal(name: "羊肉烩面", price: "$9.9", photo: "Image-5"))
-        meals.append(Meal(name: "羊肉泡馍", price: "$9.9", photo: "Image-6"))
-        meals.append(Meal(name: "盐水鸭", price: "$9.9", photo: "Image-7"))
+        meals.append(Meal(id: 1, name: "苦瓜牛肉", price: "$9.9", photo: "Image"))
+        meals.append(Meal(id: 2, name: "凉拌三丝", price: "$9.9", photo: "Image-2"))
+        meals.append(Meal(id: 3, name: "四川凉面", price: "$9.9", photo: "Image-1"))
+        meals.append(Meal(id: 4, name: "手工大包子", price: "$9.9", photo: "Image-3"))
+        meals.append(Meal(id: 5, name: "炸酱面", price: "$9.9", photo: "Image-4"))
+        meals.append(Meal(id: 6, name: "羊肉烩面", price: "$9.9", photo: "Image-5"))
+        meals.append(Meal(id: 7, name: "羊肉泡馍", price: "$9.9", photo: "Image-6"))
+        meals.append(Meal(id: 8, name: "盐水鸭", price: "$9.9", photo: "Image-7"))
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,10 +85,11 @@ class MealTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("MealTableViewCell", forIndexPath: indexPath) as! MealTableViewCell
         
         let meal = meals[indexPath.row]
+        cell.id = meal.id
         cell.name?.text = meal.name
         cell.photo.image = meal.photo
         cell.price?.text = meal.price
-
+        cell.number?.text = String(Int(cart[meal.id]!))
         return cell
     }
     
