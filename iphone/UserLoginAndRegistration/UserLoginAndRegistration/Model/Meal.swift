@@ -25,13 +25,15 @@ public enum MealRating
 
 class Meal
 {
+    var id: Int
     var name: String
     var price: String
     var photo: UIImage
     //var rating: MealRating
     
-    init(name: String, price: String, photo: String)
+    init(id: Int, name: String, price: String, photo: String)
     {
+        self.id = id
         self.name = name
         self.price = price
         if let img = UIImage(named: photo) {
