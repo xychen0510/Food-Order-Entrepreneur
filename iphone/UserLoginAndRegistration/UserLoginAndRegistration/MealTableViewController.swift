@@ -27,14 +27,14 @@ class MealTableViewController: UITableViewController {
     func loadSampleMeals() {
         meals = [Meal]()
         
-        meals.append(Meal(titled: "苦瓜牛肉", description: "$9.9", imageName: "Image"))
-        meals.append(Meal(titled: "凉拌三丝", description: "$9.9", imageName: "Image-2"))
-        meals.append(Meal(titled: "四川凉面", description: "$9.9", imageName: "Image-1"))
-        meals.append(Meal(titled: "手工大包子", description: "$9.9", imageName: "Image-3"))
-        meals.append(Meal(titled: "炸酱面", description: "$9.9", imageName: "Image-4"))
-        meals.append(Meal(titled: "羊肉烩面", description: "$9.9", imageName: "Image-5"))
-        meals.append(Meal(titled: "羊肉泡馍", description: "$9.9", imageName: "Image-6"))
-        meals.append(Meal(titled: "盐水鸭", description: "$9.9", imageName: "Image-7"))
+        meals.append(Meal(name: "苦瓜牛肉", price: "$9.9", photo: "Image"))
+        meals.append(Meal(name: "凉拌三丝", price: "$9.9", photo: "Image-2"))
+        meals.append(Meal(name: "四川凉面", price: "$9.9", photo: "Image-1"))
+        meals.append(Meal(name: "手工大包子", price: "$9.9", photo: "Image-3"))
+        meals.append(Meal(name: "炸酱面", price: "$9.9", photo: "Image-4"))
+        meals.append(Meal(name: "羊肉烩面", price: "$9.9", photo: "Image-5"))
+        meals.append(Meal(name: "羊肉泡馍", price: "$9.9", photo: "Image-6"))
+        meals.append(Meal(name: "盐水鸭", price: "$9.9", photo: "Image-7"))
     }
     
     override func didReceiveMemoryWarning() {

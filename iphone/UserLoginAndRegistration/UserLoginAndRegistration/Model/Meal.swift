@@ -27,14 +27,14 @@ class Meal
     var photo: UIImage
     var rating: MealRating
     
-    init(titled: String, description: String, imageName: String)
+    init(name: String, price: String, photo: String)
     {
-        self.name = titled
-        self.price = description
-        if let img = UIImage(named: imageName) {
-            photo = img
+        self.name = name
+        self.price = price
+        if let img = UIImage(named: photo) {
+            self.photo = img
         } else {
-            photo = UIImage(named: "default")!
+            self.photo = UIImage(named: "default")!
         }
         rating = .Unrated
     }
