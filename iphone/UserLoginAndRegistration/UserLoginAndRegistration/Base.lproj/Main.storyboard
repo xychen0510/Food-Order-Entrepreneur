@@ -48,7 +48,7 @@
         <!--Item-->
         <scene sceneID="ivb-zC-72s">
             <objects>
-                <viewController id="xgt-Ut-KOU" sceneMemberID="viewController">
+                <viewController id="xgt-Ut-KOU" customClass="AccountViewController" customModule="UserLoginAndRegistration" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Q0-mJ-jHS"/>
                         <viewControllerLayoutGuide type="bottom" id="lhf-2n-q7G"/>
@@ -56,6 +56,21 @@
                     <view key="view" contentMode="scaleToFill" id="fWi-DT-kyF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBX-XX-ie0">
+                                <rect key="frame" x="20" y="58" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drx-RL-31E">
+                                <rect key="frame" x="20" y="145" width="280" height="30"/>
+                                <state key="normal" title="Log out"/>
+                                <connections>
+                                    <action selector="LogoutButtonTapped:" destination="xgt-Ut-KOU" eventType="touchUpInside" id="KuA-qv-bMy"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="fzZ-il-EPx"/>
