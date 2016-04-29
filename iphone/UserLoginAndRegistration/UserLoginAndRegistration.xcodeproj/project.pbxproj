@@ -11,6 +11,7 @@
 		AC060E291CD062100080985D /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC060E281CD062100080985D /* MealTableViewController.swift */; };
 		B709D77F1CD36D9B007BF6A0 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B709D77E1CD36D9B007BF6A0 /* MealTableViewCell.swift */; };
 		B709D7861CD37D73007BF6A0 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B709D7851CD37D73007BF6A0 /* AccountViewController.swift */; };
+		B709D78D1CD41D58007BF6A0 /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B709D78C1CD41D58007BF6A0 /* CartTableViewController.swift */; };
 		B725F8E91CC9CA650024ED7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B725F8E81CC9CA650024ED7E /* AppDelegate.swift */; };
 		B725F8EE1CC9CA650024ED7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B725F8EC1CC9CA650024ED7E /* Main.storyboard */; };
 		B725F8F01CC9CA650024ED7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B725F8EF1CC9CA650024ED7E /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		AC060E281CD062100080985D /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 		B709D77E1CD36D9B007BF6A0 /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealTableViewCell.swift; path = ../MealTableViewCell.swift; sourceTree = "<group>"; };
 		B709D7851CD37D73007BF6A0 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		B709D78C1CD41D58007BF6A0 /* CartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
 		B725F8E51CC9CA650024ED7E /* UserLoginAndRegistration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserLoginAndRegistration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B725F8E81CC9CA650024ED7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B725F8ED1CC9CA650024ED7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +65,6 @@
 		B709D7841CD37AA5007BF6A0 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				AC060E221CD05FB90080985D /* Meal.swift */,
 				AC060E281CD062100080985D /* MealTableViewController.swift */,
 				B709D77E1CD36D9B007BF6A0 /* MealTableViewCell.swift */,
 			);
@@ -73,8 +74,17 @@
 		B709D7891CD3812B007BF6A0 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				B709D78C1CD41D58007BF6A0 /* CartTableViewController.swift */,
 			);
 			name = Cart;
+			sourceTree = "<group>";
+		};
+		B709D78A1CD41AF0007BF6A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC060E221CD05FB90080985D /* Meal.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		B725F8DC1CC9CA640024ED7E = {
@@ -99,6 +109,7 @@
 				B725F8EC1CC9CA650024ED7E /* Main.storyboard */,
 				B725F8E81CC9CA650024ED7E /* AppDelegate.swift */,
 				B79963D01CD1BFD5001144A3 /* Utils.swift */,
+				B709D78A1CD41AF0007BF6A0 /* Model */,
 				B709D7841CD37AA5007BF6A0 /* Menu */,
 				B709D7831CD37A5F007BF6A0 /* Account */,
 				B709D7891CD3812B007BF6A0 /* Cart */,
@@ -184,6 +195,7 @@
 				B79963C91CD1BCE5001144A3 /* ResetPasswordViewController.swift in Sources */,
 				B725F8FD1CCD91930024ED7E /* LoginViewController.swift in Sources */,
 				B725F8E91CC9CA650024ED7E /* AppDelegate.swift in Sources */,
+				B709D78D1CD41D58007BF6A0 /* CartTableViewController.swift in Sources */,
 				B725F8FB1CCC3E800024ED7E /* RegisterPageViewController.swift in Sources */,
 				B709D77F1CD36D9B007BF6A0 /* MealTableViewCell.swift in Sources */,
 				B79963D11CD1BFD5001144A3 /* Utils.swift in Sources */,
