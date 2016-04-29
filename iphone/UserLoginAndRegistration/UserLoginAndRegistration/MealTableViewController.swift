@@ -8,14 +8,9 @@
 
 import UIKit
 
-class AppleProductsTableViewController: UITableViewController {
+class MealTableViewController: UITableViewController {
     
-    
-    
-    var products: [Product] {
-        var productLines = ProductLine.productLines()
-        return productLines[0].products
-    }
+    var meals = [Meal]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +20,21 @@ class AppleProductsTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Load the sample data.
+        loadSampleMeals()
+    }
+    
+    func loadSampleMeals() {
+        meals = [Meal]()
+        
+        meals.append(Meal(name: "苦瓜牛肉", price: "$9.9", photo: "Image"))
+        meals.append(Meal(name: "凉拌三丝", price: "$9.9", photo: "Image-2"))
+        meals.append(Meal(name: "四川凉面", price: "$9.9", photo: "Image-1"))
+        meals.append(Meal(name: "手工大包子", price: "$9.9", photo: "Image-3"))
+        meals.append(Meal(name: "炸酱面", price: "$9.9", photo: "Image-4"))
+        meals.append(Meal(name: "羊肉烩面", price: "$9.9", photo: "Image-5"))
+        meals.append(Meal(name: "羊肉泡馍", price: "$9.9", photo: "Image-6"))
+        meals.append(Meal(name: "盐水鸭", price: "$9.9", photo: "Image-7"))
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,23 +53,28 @@ class AppleProductsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return products.count
+        return meals.count
     }
     
     // indexPath: which section and which row
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Product Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MealTableViewCell", forIndexPath: indexPath) as! MealTableViewCell
         
-        let product = products[indexPath.row]
-        cell.textLabel?.text = product.title
-        cell.detailTextLabel?.text = product.description
-        cell.imageView?.image = product.image
-        
+        let meal = meals[indexPath.row]
+        cell.name?.text = meal.name
+        cell.photo.image = meal.photo
+        cell.price?.text = meal.price
+
         return cell
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.tableView.contentInset = UIEdgeInsetsMake(30, 0, 0, 0)
+        
+        /* Only need this if no navigation bar*/
+        /*
+        self.tableView.contentInset = UIEdgeInsetsMake(30, 0, 0, 0)*/
+        
+        
         // login protected
         
         /*let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
