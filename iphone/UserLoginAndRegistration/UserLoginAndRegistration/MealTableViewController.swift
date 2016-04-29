@@ -58,6 +58,7 @@ class MealTableViewController: UITableViewController {
     
     // indexPath: which section and which row
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        self.tableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight;
         let cell = tableView.dequeueReusableCellWithIdentifier("MealTableViewCell", forIndexPath: indexPath) as! MealTableViewCell
         
         let meal = meals[indexPath.row]

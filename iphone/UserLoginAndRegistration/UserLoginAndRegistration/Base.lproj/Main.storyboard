@@ -388,12 +388,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Account" width="12" height="12"/>
-        <image name="AccountClick" width="12" height="12"/>
-        <image name="Cart" width="12" height="12"/>
-        <image name="CartClick" width="12" height="12"/>
+        <image name="Account" width="25" height="25"/>
+        <image name="AccountClick" width="25" height="25"/>
+        <image name="Cart" width="25" height="25"/>
+        <image name="CartClick" width="25" height="25"/>
         <image name="Image" width="640" height="480"/>
-        <image name="Menu" width="12" height="12"/>
-        <image name="MenuClick" width="12" height="12"/>
+        <image name="Menu" width="25" height="25"/>
+        <image name="MenuClick" width="25" height="25"/>
     </resources>
 </document>
