@@ -59,6 +59,7 @@ class AppleProductsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        self.tableView.contentInset = UIEdgeInsetsMake(30, 0, 0, 0)
         // login protected
         
         /*let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
@@ -67,12 +68,12 @@ class AppleProductsTableViewController: UITableViewController {
         }*/
     }
     
-    @IBAction func LogoutButtonTapped(sender: AnyObject) {
+    /*@IBAction func LogoutButtonTapped(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn");
         NSUserDefaults.standardUserDefaults().synchronize();
         self.performSegueWithIdentifier("loginView", sender: self);
         
-    }
+    }*/
     
     /*
      // Override to support conditional editing of the table view.
