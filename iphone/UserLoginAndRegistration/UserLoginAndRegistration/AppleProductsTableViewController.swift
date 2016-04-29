@@ -10,6 +10,8 @@ import UIKit
 
 class AppleProductsTableViewController: UITableViewController {
     
+    
+    
     var products: [Product] {
         var productLines = ProductLine.productLines()
         return productLines[0].products
@@ -57,10 +59,12 @@ class AppleProductsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
+        // login protected
+        
+        /*let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedIn");
         if (!isUserLoggedIn) {
             self.performSegueWithIdentifier("loginView", sender: self);
-        }
+        }*/
     }
     
     @IBAction func LogoutButtonTapped(sender: AnyObject) {
