@@ -16,9 +16,6 @@ class CartTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
         //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
         let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         
