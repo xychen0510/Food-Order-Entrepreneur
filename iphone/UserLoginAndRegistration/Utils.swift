@@ -76,9 +76,9 @@ class Utils {
         while(!orderPackageRetrieve.isEmpty) {
             dishPackage = orderPackageRetrieve.substringWithRange(Range<String.Index>(start: orderPackageRetrieve.startIndex.advancedBy(len-4), end: orderPackageRetrieve.endIndex.advancedBy(0)))
             //print("dishPackage \(dishPackage)")
-            var id = Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(0), end: dishPackage.endIndex.advancedBy(-1))) )
+            let id = Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(0), end: dishPackage.endIndex.advancedBy(-1))) )
             //print("id \(id)")
-            var frequency = Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(3), end: dishPackage.endIndex.advancedBy(0))) )
+            let frequency = Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(3), end: dishPackage.endIndex.advancedBy(0))) )
             //print("frequency \(frequency)")
             
             cart[id!] = frequency
