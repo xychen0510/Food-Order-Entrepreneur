@@ -16,10 +16,9 @@ class CartTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load any saved meals, otherwise load sample data.
-
-        meals = loadMeals()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
         let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         
@@ -28,10 +27,19 @@ class CartTableViewController: UITableViewController {
         } else {
             cart = (NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [Int:Int])!
         }
+        
+        // Load any saved meals, otherwise load sample data.
+        loadMeals()
     }
     
-    func loadMeals() -> [Meal] {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as! [Meal]
+    func loadMeals() {
+        meals = NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as! [Meal]
+        for var i = 0; i < meals.count; i++ {
+            if(cart[meals[i].id] == nil) {
+                meals.removeAtIndex(i);
+                i--;
+            }
+        }
     }
     
     /*
@@ -81,10 +89,5 @@ class CartTableViewController: UITableViewController {
         }
         return cell
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        
-    }
-
 
 }
