@@ -9,40 +9,65 @@
 import Foundation
 import UIKit
 
-/*
-public enum MealRating
-{
-    case Unrated
-    case Average
-    case OK
-    case Good
-    case Brilliant
-}*/
-
-
-
 // Represents a generic product. Need an image named "default"
 
-class Meal
+class Meal : NSObject, NSCoding
 {
+    
+    // MARK: Properties
     var id: Int
     var name: String
-    var price: String
+    var price: Float
     var photo: UIImage
-    //var rating: MealRating
     
-    init(id: Int, name: String, price: String, photo: String)
+    // MARK: Archiving Paths
+    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("meals")
+    
+    // MARK: Types
+    struct PropertyKey {
+        static let idKey = "id"
+        static let nameKey = "name"
+        static let priceKey = "price"
+        static let photoKey = "photo"
+    }
+    
+    // MARK: Initialization
+    
+    init?(id: Int, name: String, price: Float, photo: UIImage)
     {
         self.id = id
         self.name = name
         self.price = price
-        if let img = UIImage(named: photo) {
-            self.photo = img
-        } else {
-            self.photo = UIImage(named: "default")!
+        self.photo = photo
+        super.init()
+        if name.isEmpty || id < 0 {
+            return nil
         }
-        //rating = .Unrated
     }
+
+    
+    // MARK: NSCoding
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeInteger(id, forKey: PropertyKey.idKey)
+        aCoder.encodeObject(name, forKey: PropertyKey.nameKey)
+        aCoder.encodeFloat(price, forKey: PropertyKey.priceKey)
+        aCoder.encodeObject(photo, forKey: PropertyKey.photoKey)
+
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        
+        let id = aDecoder.decodeIntegerForKey(PropertyKey.idKey)
+        let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        let price = aDecoder.decodeFloatForKey(PropertyKey.priceKey)
+        let photo = aDecoder.decodeObjectForKey(PropertyKey.photoKey) as! UIImage
+        
+        // Must call designated initializer.
+        self.init(id: id, name: name, price: price, photo: photo)
+    }
+
 }
 
 
