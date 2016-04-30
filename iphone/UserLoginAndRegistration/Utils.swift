@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class Utils {
 
@@ -34,9 +35,48 @@ class Utils {
     }
     
     // encode: convert from menu list to a string
-    
-    
+    func encoding() -> String {
+        print("start encoding")
+        
+        var orderPackage = String()
+        var dishPackage = String()
+        let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
+        var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
+        
+        for (id, frequency) in cart {
+            var dishID = NSString(format: "%03d", id)
+            dishPackage = String( (Int(dishID as String)!<<1) | Int(frequency) )
+            
+            if orderPackage.isEmpty {
+                orderPackage = dishPackage
+            }
+            else {
+                orderPackage = String(Int(orderPackage)!<<4 | Int(dishPackage)!)
+            }
+        }
+        return orderPackage
+    }
     
     // decode: opposite direction as encode
-
+    func decoding(orderPackage: String) -> [Int:Int] {
+        print("start decoding")
+        
+        var cart : [Int:Int] = [:]
+        var dishPackage = String()
+        var orderPackageRetrieve = orderPackage
+        var len = orderPackage.characters.count
+        
+        while(!orderPackageRetrieve.isEmpty) {
+            dishPackage = orderPackageRetrieve.substringWithRange(Range<String.Index>(start: orderPackageRetrieve.startIndex.advancedBy(len-4), end: orderPackageRetrieve.endIndex.advancedBy(0)))
+            var id = Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(0), end: dishPackage.endIndex.advancedBy(-1))) )
+            var frequency = Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(3), end: dishPackage.endIndex.advancedBy(0))) )
+            
+            cart[id!] = frequency
+            orderPackageRetrieve = String(Int(orderPackageRetrieve)!>>4)
+            len = len-4
+        }
+        
+        return cart
+        
+    }
 }

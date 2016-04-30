@@ -53,6 +53,8 @@ class MealTableViewCell: UITableViewCell {
         var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         
         cart[id] = num
+        //print(id)
+        //print(cart[10])
         
         let storeData = NSKeyedArchiver.archivedDataWithRootObject(cart)
         NSUserDefaults.standardUserDefaults().setObject(storeData, forKey:"myShoppingCart")
