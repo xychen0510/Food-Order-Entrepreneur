@@ -44,10 +44,17 @@ class MealTableViewCell: UITableViewCell {
         num = num - 1
         number.text = String(Int(num))
         persistNum(num)
+        /*var test = Utils.encoding()
+        print(test)
+        print("1")
+        var test1 = Utils.decoding(test)
+        print(test1)
+        print("2")*/
     }
     
     //Need optimization, can't do persistence everytime has a +
     func persistNum(num : Int){
+        //print("start persist")
         
         let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!

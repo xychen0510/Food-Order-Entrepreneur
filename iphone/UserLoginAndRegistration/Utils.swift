@@ -35,30 +35,37 @@ class Utils {
     }
     
     // encode: convert from menu list to a string
-    func encoding() -> String {
+    static func encoding() -> String {
         print("start encoding")
         
         var orderPackage = String()
         var dishPackage = String()
+        var count = 0
         let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
-        var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
+        let cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         
         for (id, frequency) in cart {
-            var dishID = NSString(format: "%03d", id)
-            dishPackage = String( (Int(dishID as String)!<<1) | Int(frequency) )
+            count = count+4
+            //print("id \(id)")
+            //print("freq \(frequency)")
+            //let dishID = NSString(format: "%03d", id)
+            //dishPackage = String( (Int(dishID as String)!<<1) | Int(frequency) )
+            dishPackage = NSString(format: "%04d", id*10+frequency) as String
+            print(dishPackage)
             
             if orderPackage.isEmpty {
                 orderPackage = dishPackage
             }
             else {
-                orderPackage = String(Int(orderPackage)!<<4 | Int(dishPackage)!)
+                //orderPackage = NSString(format: "%0\(count)d", Int(orderPackage)!*10000+Int(dishPackage)!) as String
+                orderPackage = orderPackage+dishPackage
             }
         }
         return orderPackage
     }
     
     // decode: opposite direction as encode
-    func decoding(orderPackage: String) -> [Int:Int] {
+    static func decoding(orderPackage: String) -> [Int:Int] {
         print("start decoding")
         
         var cart : [Int:Int] = [:]
@@ -68,11 +75,18 @@ class Utils {
         
         while(!orderPackageRetrieve.isEmpty) {
             dishPackage = orderPackageRetrieve.substringWithRange(Range<String.Index>(start: orderPackageRetrieve.startIndex.advancedBy(len-4), end: orderPackageRetrieve.endIndex.advancedBy(0)))
+            //print("dishPackage \(dishPackage)")
             var id = Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(0), end: dishPackage.endIndex.advancedBy(-1))) )
+            //print("id \(id)")
             var frequency = Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(3), end: dishPackage.endIndex.advancedBy(0))) )
+            //print("frequency \(frequency)")
             
             cart[id!] = frequency
-            orderPackageRetrieve = String(Int(orderPackageRetrieve)!>>4)
+            //orderPackageRetrieve = String(Int(orderPackageRetrieve)!-Int( dishPackage.substringWithRange(Range<String.Index>(start: dishPackage.startIndex.advancedBy(len-4), end: dishPackage.endIndex.advancedBy(0))) )!)
+            orderPackageRetrieve = orderPackageRetrieve.substringToIndex(orderPackageRetrieve.endIndex.predecessor())
+            orderPackageRetrieve = orderPackageRetrieve.substringToIndex(orderPackageRetrieve.endIndex.predecessor())
+            orderPackageRetrieve = orderPackageRetrieve.substringToIndex(orderPackageRetrieve.endIndex.predecessor())
+            orderPackageRetrieve = orderPackageRetrieve.substringToIndex(orderPackageRetrieve.endIndex.predecessor())
             len = len-4
         }
         
