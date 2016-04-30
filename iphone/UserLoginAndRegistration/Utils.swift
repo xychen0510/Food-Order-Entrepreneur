@@ -32,5 +32,11 @@ class Utils {
         myAlert.addAction(okAction);
         controller.presentViewController(myAlert, animated: true, completion: nil);
     }
+    
+    // encode: convert from menu list to a string
+    
+    
+    
+    // decode: opposite direction as encode
 
 }
