@@ -66,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				AC060E281CD062100080985D /* MealTableViewController.swift */,
-				B709D77E1CD36D9B007BF6A0 /* MealTableViewCell.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -83,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				AC060E221CD05FB90080985D /* Meal.swift */,
+				B709D77E1CD36D9B007BF6A0 /* MealTableViewCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
