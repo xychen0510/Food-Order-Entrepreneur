@@ -34,23 +34,42 @@ class MealTableViewCell: UITableViewCell {
     @IBAction func plusButtonTapped(sender: UIButton) {
         let num = Int(number.text!)! + 1
         number.text = String(Int(num))
-        persistNum(num)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.persistNum(num)
+        })
     }
     
     @IBAction func minusButtonTapped(sender: UIButton) {
         
         var num = Int(number.text!)!
-        if(num == 0) { removeKeyValuePair(); return }
         num = num - 1
-        number.text = String(Int(num))
-        persistNum(num)
+        
+        
+        //put on different thread, file access not blocking UI
+        
+            if(num <= 0)
+            {
+                num = 0
+                number.text = String(Int(num))
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.removeKeyValuePair()
+                })
+
+            }
+            else {
+                number.text = String(Int(num))
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.persistNum(num)
+                })
+            }
+    }
         /*var test = Utils.encoding()
         print(test)
         print("1")
         var test1 = Utils.decoding(test)
         print(test1)
         print("2")*/
-    }
+    
     
     //Need optimization, can't do persistence everytime has a +
     func persistNum(num : Int){
@@ -59,7 +78,7 @@ class MealTableViewCell: UITableViewCell {
         let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         
-        cart[id] = num
+        cart[self.id] = num
         //print(id)
         //print(cart[10])
         
@@ -73,10 +92,11 @@ class MealTableViewCell: UITableViewCell {
         let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         
-        cart.removeValueForKey(id)
+        cart.removeValueForKey(self.id)
         
         let storeData = NSKeyedArchiver.archivedDataWithRootObject(cart)
         NSUserDefaults.standardUserDefaults().setObject(storeData, forKey:"myShoppingCart")
         NSUserDefaults().synchronize()
     }
 }
+
