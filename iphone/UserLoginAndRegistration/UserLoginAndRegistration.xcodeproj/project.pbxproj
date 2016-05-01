@@ -10,6 +10,7 @@
 		AC060E241CD05FB90080985D /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC060E221CD05FB90080985D /* Meal.swift */; };
 		AC060E291CD062100080985D /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC060E281CD062100080985D /* MealTableViewController.swift */; };
 		ACB48B371CD556F600E74941 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB48B361CD556F600E74941 /* Main.storyboard */; };
+		ACB48B391CD6595F00E74941 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB48B381CD6595F00E74941 /* CartTableViewCell.swift */; };
 		B709D77F1CD36D9B007BF6A0 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B709D77E1CD36D9B007BF6A0 /* MealTableViewCell.swift */; };
 		B709D7861CD37D73007BF6A0 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B709D7851CD37D73007BF6A0 /* AccountViewController.swift */; };
 		B709D78D1CD41D58007BF6A0 /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B709D78C1CD41D58007BF6A0 /* CartTableViewController.swift */; };
@@ -26,6 +27,7 @@
 		AC060E221CD05FB90080985D /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Meal.swift; path = Model/Meal.swift; sourceTree = "<group>"; };
 		AC060E281CD062100080985D /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 		ACB48B361CD556F600E74941 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		ACB48B381CD6595F00E74941 /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		B709D77E1CD36D9B007BF6A0 /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealTableViewCell.swift; path = ../MealTableViewCell.swift; sourceTree = "<group>"; };
 		B709D7851CD37D73007BF6A0 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B709D78C1CD41D58007BF6A0 /* CartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				AC060E221CD05FB90080985D /* Meal.swift */,
 				B709D77E1CD36D9B007BF6A0 /* MealTableViewCell.swift */,
+				ACB48B381CD6595F00E74941 /* CartTableViewCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				B725F8E91CC9CA650024ED7E /* AppDelegate.swift in Sources */,
 				B709D78D1CD41D58007BF6A0 /* CartTableViewController.swift in Sources */,
 				B725F8FB1CCC3E800024ED7E /* RegisterPageViewController.swift in Sources */,
+				ACB48B391CD6595F00E74941 /* CartTableViewCell.swift in Sources */,
 				B709D77F1CD36D9B007BF6A0 /* MealTableViewCell.swift in Sources */,
 				B79963D11CD1BFD5001144A3 /* Utils.swift in Sources */,
 				AC060E241CD05FB90080985D /* Meal.swift in Sources */,

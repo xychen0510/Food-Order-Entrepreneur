@@ -1,23 +1,20 @@
 //
-//  MealTableViewCell.swift
+//  CartTableViewCell.swift
 //  UserLoginAndRegistration
 //
-//  Created by Chaoran Wang on 4/29/16.
+//  Created by Joe on 4/29/16.
 //  Copyright © 2016 food. All rights reserved.
 //
 
 import UIKit
 
-class MealTableViewCell: UITableViewCell {
-
+class CartTableViewCell: UITableViewCell {
+    
     var id: Int!
     
     @IBOutlet weak var name: UILabel!
-
     @IBOutlet weak var photo: UIImageView!
-    
     @IBOutlet weak var price: UILabel!
-    
     @IBOutlet weak var number: UILabel!
     
     
@@ -25,63 +22,76 @@ class MealTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+
     
-    @IBAction func addButtonTapped(sender: UIButton) {
+    
+    @IBAction func minusButtonTapped(sender: UIButton) {
+        var num = Int(number.text!)!
+        if(num == 0) { removeKeyValuePair(); return }
+        num = num - 1
+        number.text = String(Int(num))
+        persistNum(num)
+        let total = Utils.calcTotalPrice()
+        print("total\(total)")
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.theViewController.totalPrice.text = "\(total)"
+        
+        /*var test = Utils.encoding()
+         print(test)
+         print("1")
+         var test1 = Utils.decoding(test)
+         print(test1)
+         print("2")*/
+    }
+
+    
+    
+    @IBAction func plusButtonTapped(sender: UIButton) {
+        let num = Int(number.text!)! + 1
+        if num>=10 {
+            let myAlert = UIAlertController(title: "Sorry", message: "Reach order maximum for a dish", preferredStyle: UIAlertControllerStyle.Alert);
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
+            myAlert.addAction(okAction);
+            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(myAlert, animated: true, completion: nil);
+            return
+        }
+        number.text = String(Int(num))
+        persistNum(num)
+        print(Utils.calcTotalPrice())
+    }
+    
+    
+    
+    
+    
+    
+    
+    /*@IBAction func plusButtonTapped(sender: UIButton) {
         let num = Int(number.text!)! + 1
         number.text = String(Int(num))
         persistNum(num)
-        let myAlert = UIAlertController(title: "Yeah!", message: "Add to cart", preferredStyle: UIAlertControllerStyle.Alert);
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
-        myAlert.addAction(okAction);
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(myAlert, animated: true, completion: nil);
-    }
-    
-
-    @IBAction func plusButtonTapped(sender: UIButton) {
-        let num = Int(number.text!)! + 1
-        number.text = String(Int(num))
-        dispatch_async(dispatch_get_main_queue(), {
-            self.persistNum(num)
-        })
     }
     
     @IBAction func minusButtonTapped(sender: UIButton) {
         
         var num = Int(number.text!)!
+        if(num == 0) { removeKeyValuePair(); return }
         num = num - 1
-        
-        
-        //put on different thread, file access not blocking UI
-        
-            if(num <= 0)
-            {
-                num = 0
-                number.text = String(Int(num))
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.removeKeyValuePair()
-                })
-
-            }
-            else {
-                number.text = String(Int(num))
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.persistNum(num)
-                })
-            }
-    }
+        number.text = String(Int(num))
+        persistNum(num)
         /*var test = Utils.encoding()
-        print(test)
-        print("1")
-        var test1 = Utils.decoding(test)
-        print(test1)
-        print("2")*/
-    
+         print(test)
+         print("1")
+         var test1 = Utils.decoding(test)
+         print(test1)
+         print("2")*/
+    }*/
     
     //Need optimization, can't do persistence everytime has a +
     func persistNum(num : Int){
@@ -90,7 +100,7 @@ class MealTableViewCell: UITableViewCell {
         let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         
-        cart[self.id] = num
+        cart[id] = num
         //print(id)
         //print(cart[10])
         
@@ -104,7 +114,7 @@ class MealTableViewCell: UITableViewCell {
         let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         var cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         
-        cart.removeValueForKey(self.id)
+        cart.removeValueForKey(id)
         
         let storeData = NSKeyedArchiver.archivedDataWithRootObject(cart)
         NSUserDefaults.standardUserDefaults().setObject(storeData, forKey:"myShoppingCart")
