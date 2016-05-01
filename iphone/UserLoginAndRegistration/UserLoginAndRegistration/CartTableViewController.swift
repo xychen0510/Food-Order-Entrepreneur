@@ -14,29 +14,40 @@ class CartTableViewController: UITableViewController {
     
     var cart : [Int:Int] = [:]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
-        let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
-        
-        if(data == nil) {
-            //no sopping cart information available
-        } else {
-            cart = (NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [Int:Int])!
-        }
-        
-        // Load any saved meals, otherwise load sample data.
-        loadMeals()
+    /*This method will run everytime user make the view appear*/
+    override func viewWillAppear(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue(), {
+            //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
+            let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
+            
+            if(data == nil) {
+                //no sopping cart information available
+            } else {
+                self.cart = (NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [Int:Int])!
+            }
+            
+            // Load any saved meals, otherwise load sample data.
+            self.loadMeals()
+            self.tableView.reloadData()
+        })
     }
     
+    /*This method only run once*/
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    /* note that this method is running on a thread, after newMeal calculation must assign back to self*/
     func loadMeals() {
-        meals = NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as! [Meal]
-        for var i = 0; i < meals.count; i++ {
-            if(cart[meals[i].id] == nil) {
-                meals.removeAtIndex(i);
+        var newMeals = [Meal]()
+        newMeals = NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as! [Meal]
+        for var i = 0; i < newMeals.count; i++ {
+            if(self.cart[newMeals[i].id] == nil) {
+                newMeals.removeAtIndex(i);
                 i--;
             }
         }
+        self.meals = newMeals
     }
     
     /*

@@ -14,26 +14,33 @@ class MealTableViewController: UITableViewController {
     
     var cart : [Int:Int] = [:]
     
+    override func viewWillAppear(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue(), {
+        // Load any saved meals, otherwise load sample data.
+            if let savedMeals = self.loadMeals() {
+                self.meals = savedMeals
+            } else {
+            // Load the sample data.
+                self.loadSampleMeals()
+            }
+        
+            //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
+            let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
+        
+        
+            if(data == nil) {
+                self.initializeShoppingCart()
+            } else {
+                self.cart = (NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [Int:Int])!
+            }
+        
+            self.tableView.reloadData()
+        })
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load any saved meals, otherwise load sample data.
-        if let savedMeals = loadMeals() {
-            meals = savedMeals
-        } else {
-            // Load the sample data.
-            loadSampleMeals()
-        }
-        
-        //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
-        let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
-
-        
-        if(data == nil) {
-            initializeShoppingCart()
-        } else {
-            cart = (NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [Int:Int])!
-        }
     }
     
     func initializeShoppingCart() {
