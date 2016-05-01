@@ -45,21 +45,24 @@ class MealTableViewController: UITableViewController {
     
     func initializeShoppingCart() {
         //using swift dictionary, hash table for shopping cart [id:num]
-        let data = NSKeyedArchiver.archivedDataWithRootObject(cart)
+        let newCart : [Int:Int] = [:]
+        let data = NSKeyedArchiver.archivedDataWithRootObject(newCart)
         NSUserDefaults.standardUserDefaults().setObject(data, forKey:"myShoppingCart")
         NSUserDefaults().synchronize()
     }
     
     func loadSampleMeals() {
-        meals = [Meal]()
-        meals.append(Meal(id: 1, name: "苦瓜牛肉", price: 9.9, photo: UIImage(imageLiteral: "Image"))!)
-        meals.append(Meal(id: 2, name: "凉拌三丝", price: 9.9, photo: UIImage(imageLiteral:"Image-2"))!)
-        meals.append(Meal(id: 3, name: "四川凉面", price: 9.9, photo: UIImage(imageLiteral:"Image-1"))!)
-        meals.append(Meal(id: 4, name: "手工大包子", price: 9.9, photo: UIImage(imageLiteral:"Image-3"))!)
-        meals.append(Meal(id: 5, name: "炸酱面", price: 9.9, photo: UIImage(imageLiteral:"Image-4"))!)
-        meals.append(Meal(id: 6, name: "羊肉烩面", price: 9.9, photo: UIImage(imageLiteral:"Image-5"))!)
-        meals.append(Meal(id: 7, name: "羊肉泡馍", price: 9.9, photo: UIImage(imageLiteral:"Image-6"))!)
-        meals.append(Meal(id: 8, name: "盐水鸭", price: 9.9, photo: UIImage(imageLiteral:"Image-7"))!)
+        var newMeals = [Meal]()
+        newMeals = [Meal]()
+        newMeals.append(Meal(id: 1, name: "苦瓜牛肉", price: 9.9, photo: UIImage(imageLiteral: "Image"))!)
+        newMeals.append(Meal(id: 2, name: "凉拌三丝", price: 9.9, photo: UIImage(imageLiteral:"Image-2"))!)
+        newMeals.append(Meal(id: 3, name: "四川凉面", price: 9.9, photo: UIImage(imageLiteral:"Image-1"))!)
+        newMeals.append(Meal(id: 4, name: "手工大包子", price: 9.9, photo: UIImage(imageLiteral:"Image-3"))!)
+        newMeals.append(Meal(id: 5, name: "炸酱面", price: 9.9, photo: UIImage(imageLiteral:"Image-4"))!)
+        newMeals.append(Meal(id: 6, name: "羊肉烩面", price: 9.9, photo: UIImage(imageLiteral:"Image-5"))!)
+        newMeals.append(Meal(id: 7, name: "羊肉泡馍", price: 9.9, photo: UIImage(imageLiteral:"Image-6"))!)
+        newMeals.append(Meal(id: 8, name: "盐水鸭", price: 9.9, photo: UIImage(imageLiteral:"Image-7"))!)
+        self.meals = newMeals
         saveMeals()
     }
     
@@ -106,7 +109,7 @@ class MealTableViewController: UITableViewController {
     
     // MARK: NSCoding
     func saveMeals() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path!)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.meals, toFile: Meal.ArchiveURL.path!)
         if !isSuccessfulSave {
             print("Failed to save meals...")
         }

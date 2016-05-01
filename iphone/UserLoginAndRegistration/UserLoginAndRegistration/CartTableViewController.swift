@@ -21,7 +21,7 @@ class CartTableViewController: UITableViewController {
             let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
             
             if(data == nil) {
-                //no sopping cart information available
+                //no shopping cart information available
             } else {
                 self.cart = (NSKeyedUnarchiver.unarchiveObjectWithData(data!) as? [Int:Int])!
             }
