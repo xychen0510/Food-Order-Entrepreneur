@@ -31,7 +31,7 @@ class CartTableViewController: UITableViewController {
             // Load any saved meals, otherwise load sample data.
             self.loadMeals()
             self.tableView.reloadData()
-            self.totalPrice.text =  String(Utils.calcTotalPrice())
+            self.totalPrice.text =  "Total Price: " + String(Utils.calcTotalPrice())
         })
     }
     

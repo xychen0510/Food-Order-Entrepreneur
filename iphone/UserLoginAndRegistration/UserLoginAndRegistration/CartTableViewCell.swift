@@ -44,6 +44,9 @@ class CartTableViewCell: UITableViewCell {
             number.text = String(Int(num))
             dispatch_async(dispatch_get_main_queue(), {
                 self.removeKeyValuePair()
+                let total = Utils.calcTotalPrice()
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.cartTableViewControllerRef.totalPrice.text = "Total Price: " + "\(total)"
             })
             
         }
@@ -51,13 +54,12 @@ class CartTableViewCell: UITableViewCell {
             number.text = String(Int(num))
             dispatch_async(dispatch_get_main_queue(), {
                 self.persistNum(num)
+                let total = Utils.calcTotalPrice()
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.cartTableViewControllerRef.totalPrice.text = "Total Price: " + "\(total)"
             })
         }
         //print("total\(total)")
-        let total = Utils.calcTotalPrice()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.cartTableViewControllerRef.totalPrice.text = "\(total)"
-        
         /*var test = Utils.encoding()
          print(test)
          print("1")
@@ -81,10 +83,9 @@ class CartTableViewCell: UITableViewCell {
         number.text = String(Int(num))
         dispatch_async(dispatch_get_main_queue(), {
             self.persistNum(num)
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.cartTableViewControllerRef.totalPrice.text = "Total Price: " + String(Utils.calcTotalPrice())
         })
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.cartTableViewControllerRef.totalPrice.text = String(Utils.calcTotalPrice())
     }
     
     
