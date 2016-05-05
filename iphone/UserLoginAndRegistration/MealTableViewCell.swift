@@ -20,7 +20,6 @@ class MealTableViewCell: UITableViewCell {
     
     @IBOutlet weak var number: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,17 +32,6 @@ class MealTableViewCell: UITableViewCell {
     }
     
     @IBAction func addButtonTapped(sender: UIButton) {
-        let num = Int(number.text!)! + 1
-        number.text = String(Int(num))
-        persistNum(num)
-        let myAlert = UIAlertController(title: "Yeah!", message: "Add to cart", preferredStyle: UIAlertControllerStyle.Alert);
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
-        myAlert.addAction(okAction);
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(myAlert, animated: true, completion: nil);
-    }
-    
-
-    @IBAction func plusButtonTapped(sender: UIButton) {
         var num = Int(number.text!)! + 1
         if num>=10 {
             num = 9
@@ -59,30 +47,47 @@ class MealTableViewCell: UITableViewCell {
         })
     }
     
-    @IBAction func minusButtonTapped(sender: UIButton) {
-        
-        var num = Int(number.text!)!
-        num = num - 1
-        
-        
-        //put on different thread, file access not blocking UI
-        
-            if(num <= 0)
-            {
-                num = 0
-                number.text = String(Int(num))
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.removeKeyValuePair()
-                })
 
-            }
-            else {
-                number.text = String(Int(num))
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.persistNum(num)
-                })
-            }
-    }
+//    @IBAction func plusButtonTapped(sender: UIButton) {
+//        var num = Int(number.text!)! + 1
+//        if num>=10 {
+//            num = 9
+//            let myAlert = UIAlertController(title: "Sorry", message: "Reach order maximum for a dish", preferredStyle: UIAlertControllerStyle.Alert);
+//            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
+//            myAlert.addAction(okAction);
+//            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(myAlert, animated: true, completion: nil);
+//            return
+//        }
+//        number.text = String(Int(num))
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.persistNum(num)
+//        })
+//    }
+//    
+//    @IBAction func minusButtonTapped(sender: UIButton) {
+//        
+//        var num = Int(number.text!)!
+//        num = num - 1
+//        
+//        
+//        //put on different thread, file access not blocking UI
+//        
+//            if(num <= 0)
+//            {
+//                num = 0
+//                number.text = String(Int(num))
+//                dispatch_async(dispatch_get_main_queue(), {
+//                    self.removeKeyValuePair()
+//                })
+//
+//            }
+//            else {
+//                number.text = String(Int(num))
+//                dispatch_async(dispatch_get_main_queue(), {
+//                    self.persistNum(num)
+//                })
+//            }
+//    }
         /*var test = Utils.encoding()
         print(test)
         print("1")

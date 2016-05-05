@@ -41,7 +41,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartTableViewCell" rowHeight="81" id="ed3-Y4-BlG" customClass="CartTableViewCell" customModule="UserLoginAndRegistration" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartTableViewCell" rowHeight="81" id="ed3-Y4-BlG" customClass="CartTableViewCell" customModule="UserLoginAndRegistration" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ed3-Y4-BlG" id="HlI-Wk-Bwk">
@@ -155,7 +155,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealTableViewCell" id="Bo8-r5-61M" customClass="MealTableViewCell" customModule="UserLoginAndRegistration" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MealTableViewCell" id="Bo8-r5-61M" customClass="MealTableViewCell" customModule="UserLoginAndRegistration" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bo8-r5-61M" id="Lad-gx-t5K">
@@ -177,30 +177,16 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yK-6c-eQ8">
-                                            <rect key="frame" x="260" y="18" width="25" height="25"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="-"/>
-                                            <connections>
-                                                <action selector="minusButtonTapped:" destination="Bo8-r5-61M" eventType="touchUpInside" id="bAc-rJ-6sr"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tj-UN-IN4">
-                                            <rect key="frame" x="290" y="19" width="25" height="24"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <state key="normal" title="+"/>
-                                            <connections>
-                                                <action selector="plusButtonTapped:" destination="Bo8-r5-61M" eventType="touchUpInside" id="gCW-Uz-pIa"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqo-A2-wZ9">
-                                            <rect key="frame" x="267" y="22" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZG-1K-KSu">
+                                            <rect key="frame" x="291" y="22" width="29" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
+                                            <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGW-Pz-cmv">
-                                            <rect key="frame" x="173" y="16" width="79" height="30"/>
+                                            <rect key="frame" x="194" y="18" width="100" height="30"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal" title="Add to Cart"/>
                                             <connections>
                                                 <action selector="addButtonTapped:" destination="Bo8-r5-61M" eventType="touchUpInside" id="R5Q-Rc-463"/>
@@ -210,7 +196,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="name" destination="w2D-do-SpC" id="xCC-Rk-PJg"/>
-                                    <outlet property="number" destination="mqo-A2-wZ9" id="amR-fH-eeP"/>
+                                    <outlet property="number" destination="tZG-1K-KSu" id="1tn-mH-TIZ"/>
                                     <outlet property="photo" destination="XYu-gg-kRA" id="Q9s-jX-1wB"/>
                                     <outlet property="price" destination="797-uD-VEH" id="7BB-US-OfA"/>
                                 </connections>

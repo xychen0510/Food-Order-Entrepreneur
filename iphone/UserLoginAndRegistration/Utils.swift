@@ -94,26 +94,24 @@ class Utils {
         
     }
     
-    static func calcTotalPrice() -> Double {
-        var totalPrice = 0.0
-        var dishPrice = 0.0
-        var price = 0.0
+    static func calcTotalPrice() -> Float {
+        var totalPrice : Float = 0
+        var dishPrice : Float = 0
+        var price : Float = 0
         
         let meals = NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as! [Meal]
         let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         let cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         for (id, frequency) in cart {
-            print("id \(id)")
-            print("freq \(frequency)")
-            
             for var i=0; i<meals.count; i++ {
                 if(meals[i].id == id) {
-                    price = Double(meals[i].price)
+                    price = meals[i].price
                 }
             }
-            dishPrice = price*Double(frequency)
+            dishPrice = price * Float(frequency)
             totalPrice = totalPrice+dishPrice
         }
+        totalPrice = round(totalPrice * 100) / 100
         return totalPrice
     }
 }
