@@ -44,7 +44,15 @@ class MealTableViewCell: UITableViewCell {
     
 
     @IBAction func plusButtonTapped(sender: UIButton) {
-        let num = Int(number.text!)! + 1
+        var num = Int(number.text!)! + 1
+        if num>=10 {
+            num = 9
+            let myAlert = UIAlertController(title: "Sorry", message: "Reach order maximum for a dish", preferredStyle: UIAlertControllerStyle.Alert);
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
+            myAlert.addAction(okAction);
+            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(myAlert, animated: true, completion: nil);
+            return
+        }
         number.text = String(Int(num))
         dispatch_async(dispatch_get_main_queue(), {
             self.persistNum(num)
