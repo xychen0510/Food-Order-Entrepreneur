@@ -33,14 +33,30 @@ class CartTableViewCell: UITableViewCell {
     
     @IBAction func minusButtonTapped(sender: UIButton) {
         var num = Int(number.text!)!
-        if(num == 0) { removeKeyValuePair(); return }
         num = num - 1
-        number.text = String(Int(num))
-        persistNum(num)
+        
+        
+        //put on different thread, file access not blocking UI
+        
+        if(num <= 0)
+        {
+            num = 0
+            number.text = String(Int(num))
+            dispatch_async(dispatch_get_main_queue(), {
+                self.removeKeyValuePair()
+            })
+            
+        }
+        else {
+            number.text = String(Int(num))
+            dispatch_async(dispatch_get_main_queue(), {
+                self.persistNum(num)
+            })
+        }
+        //print("total\(total)")
         let total = Utils.calcTotalPrice()
-        print("total\(total)")
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.theViewController.totalPrice.text = "\(total)"
+        appDelegate.cartTableViewControllerRef.totalPrice.text = "\(total)"
         
         /*var test = Utils.encoding()
          print(test)
@@ -53,8 +69,9 @@ class CartTableViewCell: UITableViewCell {
     
     
     @IBAction func plusButtonTapped(sender: UIButton) {
-        let num = Int(number.text!)! + 1
+        var num = Int(number.text!)! + 1
         if num>=10 {
+            num = 9
             let myAlert = UIAlertController(title: "Sorry", message: "Reach order maximum for a dish", preferredStyle: UIAlertControllerStyle.Alert);
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil);
             myAlert.addAction(okAction);
@@ -62,8 +79,12 @@ class CartTableViewCell: UITableViewCell {
             return
         }
         number.text = String(Int(num))
-        persistNum(num)
-        print(Utils.calcTotalPrice())
+        dispatch_async(dispatch_get_main_queue(), {
+            self.persistNum(num)
+        })
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.cartTableViewControllerRef.totalPrice.text = String(Utils.calcTotalPrice())
     }
     
     

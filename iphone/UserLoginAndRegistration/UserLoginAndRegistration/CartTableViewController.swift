@@ -14,8 +14,10 @@ class CartTableViewController: UITableViewController {
     
     var cart : [Int:Int] = [:]
     
+    @IBOutlet weak var totalPrice: UILabel!
     /*This method will run everytime user make the view appear*/
     override func viewWillAppear(animated: Bool) {
+        
         dispatch_async(dispatch_get_main_queue(), {
             //NSUserDefaults.standardUserDefaults().removeObjectForKey("myShoppingCart")
             let data = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
@@ -29,12 +31,15 @@ class CartTableViewController: UITableViewController {
             // Load any saved meals, otherwise load sample data.
             self.loadMeals()
             self.tableView.reloadData()
+            self.totalPrice.text =  String(Utils.calcTotalPrice())
         })
     }
     
     /*This method only run once*/
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.cartTableViewControllerRef = self
     }
 
     /* note that this method is running on a thread, after newMeal calculation must assign back to self*/
@@ -83,7 +88,7 @@ class CartTableViewController: UITableViewController {
     // indexPath: which section and which row
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //self.tableView.bounces = true;
-        let cell = tableView.dequeueReusableCellWithIdentifier("MealTableViewCell", forIndexPath: indexPath) as! MealTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CartTableViewCell", forIndexPath: indexPath) as! CartTableViewCell
         
         let meal = meals[indexPath.row]
         cell.id = meal.id

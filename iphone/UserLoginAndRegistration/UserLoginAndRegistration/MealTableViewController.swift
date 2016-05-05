@@ -16,6 +16,7 @@ class MealTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         dispatch_async(dispatch_get_main_queue(), {
+        
         // Load any saved meals, otherwise load sample data.
             if let savedMeals = self.loadMeals() {
                 self.meals = savedMeals

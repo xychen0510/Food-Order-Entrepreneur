@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T3a-hA-RUG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T3a-hA-RUG">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -45,7 +45,7 @@
                                 <rect key="frame" x="0.0" y="92" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ed3-Y4-BlG" id="HlI-Wk-Bwk">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lgi-CT-dzE">
@@ -101,7 +101,7 @@
                     <navigationItem key="navigationItem" title="Cart" id="ooj-xm-jL6"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="totalPrice" destination="FIA-Bi-IwY" id="HGW-5s-Cb2"/>
+                        <outlet property="totalPrice" destination="FIA-Bi-IwY" id="2kq-bV-PKJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9R-PB-i0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,7 +159,7 @@
                                 <rect key="frame" x="0.0" y="86" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bo8-r5-61M" id="Lad-gx-t5K">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="XYu-gg-kRA">
