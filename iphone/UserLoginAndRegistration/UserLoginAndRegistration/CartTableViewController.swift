@@ -45,8 +45,8 @@ class CartTableViewController: UITableViewController {
     /* note that this method is running on a thread, after newMeal calculation must assign back to self*/
     func loadMeals() {
         var newMeals = [Meal]()
-        newMeals = NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as! [Meal]
-        for var i = 0; i < newMeals.count; i++ {
+        newMeals = NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL!.path!) as! [Meal]
+        for (var i = 0; i < newMeals.count; i++) {
             if(self.cart[newMeals[i].id] == nil) {
                 newMeals.removeAtIndex(i);
                 i--;

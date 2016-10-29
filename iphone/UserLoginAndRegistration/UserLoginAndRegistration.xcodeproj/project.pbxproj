@@ -156,6 +156,7 @@
 					B725F8E41CC9CA640024ED7E = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = J8B5R2MWY9;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -315,6 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.food.UserLoginAndRegistration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -329,6 +331,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.food.UserLoginAndRegistration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

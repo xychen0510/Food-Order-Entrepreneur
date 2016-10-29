@@ -99,11 +99,11 @@ class Utils {
         var dishPrice : Float = 0
         var price : Float = 0
         
-        let meals = NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as! [Meal]
+        let meals = NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL!.path!) as! [Meal]
         let loadData = NSUserDefaults().objectForKey("myShoppingCart") as? NSData
         let cart = (NSKeyedUnarchiver.unarchiveObjectWithData(loadData!) as? [Int:Int])!
         for (id, frequency) in cart {
-            for var i=0; i<meals.count; i++ {
+            for i in 0 ..< meals.count {
                 if(meals[i].id == id) {
                     price = meals[i].price
                 }
